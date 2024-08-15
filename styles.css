@@ -1,0 +1,224 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #121212;
+    color: white;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    position: relative;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ddd;
+}
+
+section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#home {
+    text-align: center;
+}
+
+#home h1 {
+    margin: 10px 0;
+}
+
+#home p {
+    font-size: 1.2em;
+}
+
+#home div a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#home div a:hover {
+    background-color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+}
+
+/* Responsive Menu */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    #nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        padding: 20px 0;
+        transition: max-height 0.5s ease;
+        overflow: hidden;
+        max-height: 0;
+    }
+
+    #nav-links.active {
+        display: flex;
+        max-height: 300px; /* Adjust based on the number of links */
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 5px; /* Center the button vertically in the header */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg);
+}
+
+/* Dark and Light Theme */
+body.light-theme {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body.light-theme header {
+    background-color: #fff;
+    color: #333;
+}
+
+body.light-theme nav ul li a {
+    color: #333;
+}
+
+body.light-theme nav ul li a:hover {
+    color: #666;
+}
+
+body.light-theme section {
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme #home div a {
+    background-color: #fff;
+    color: #333;
+}
+
+body.light-theme #home div a:hover {
+    background-color: #ddd;
+}
+
+body.light-theme footer {
+    background-color: #fff;
+    color: #333;
+}
+
+body.light-theme .theme-toggle {
+    color: #333;
+}
+
+body.light-theme .hamburger span {
+    background-color: #333; /* Make sure the hamburger lines are visible in light mode */
+}
+
+/* Smooth transition */
+body, section, nav ul li a, footer, #home div a {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+#nav-links {
+    transition: max-height 0.5s ease-in-out;
+}
