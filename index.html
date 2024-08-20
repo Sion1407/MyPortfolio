@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sion Chowdhury - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="description" content="Portfolio of Sion Chowdhury, Java Backend Developer.">
     <meta property="og:title" content="Sion Chowdhury - Portfolio">
     <meta property="og:description" content="Experienced Java Backend Developer specializing in scalable, high-performance applications.">
@@ -21,7 +22,7 @@
                 <span></span>
             </button>
             <ul id="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#hero-section">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -31,19 +32,42 @@
             <button class="theme-toggle" id="theme-toggle">🌙</button>
         </nav>
     </header>
-    
-    
-    
 
-    <section id="home">
+
+    <div class="hero-section" id="hero-section">
         <h1>Sion Chowdhury</h1>
-        <p>Java Backend Developer</p>
-        <p>Experienced in building scalable, high-performance applications.</p>
-        <div>
-            <a href="http://www.linkedin.com/in/sionchowdhury" target="_blank">LinkedIn</a>
-            <a href="https://github.com/Sion1407" target="_blank">GitHub</a>
+        <h2>I am <span id="typed-text"></span></h2>
+        <div class="social-icons dark-mode-icons">
+            <a href="https://github.com/Sion1407" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="http://www.linkedin.com/in/sionchowdhury" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="/SionChowdhury_CV (3).pdf" download="Sion_Chowdhury_Resume" aria-label="Resume">
+                <button class="resume-btn">
+                    <span>Resume</span>
+                </button>
+            </a>
         </div>
-    </section>
+        
+        <div class="social-icons light-mode-icons">
+            <a href="https://github.com/Sion1407" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="http://www.linkedin.com/in/sionchowdhury" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="/SionChowdhury_CV (3).pdf" download="Sion_Chowdhury_Resume" aria-label="Resume">
+                <button class="resume-btn">
+                    <span>Resume</span>
+                </button>
+            </a>
+        </div>
+        
+    </div>
+    
+    
 
     <section id="about">
         <h2>About Me</h2>
@@ -82,21 +106,32 @@
     </section>
 
     <section id="contact">
-        <h2>Contact Me</h2>
-        <form id="contactForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send</button>
+        <h2>Want to connect with me?</h2>
+        <form id="hireMeForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send</button>
         </form>
     </section>
-
-    <!-- <footer>
-        <p>&copy; 2024 Sion Chowdhury. All Rights Reserved.</p>
-    </footer> -->
+    
+     <!-- Thank You Popup -->
+     <div id="thankYouPopup" class="popup">
+        <div class="popup-content">
+            <h2>Thank You!</h2>
+            <p>Your request has been sent.</p>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

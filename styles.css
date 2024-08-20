@@ -7,14 +7,21 @@ body {
     background-color: #121212;
     color: white;
 }
+html {
+    scroll-behavior: smooth;
+}
+
 
 header {
     background-color: #333;
     color: white;
     padding: 10px 20px;
     text-align: center;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
+
 
 nav ul {
     list-style: none;
@@ -38,6 +45,164 @@ nav ul li a {
 nav ul li a:hover {
     color: #ddd;
 }
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c34;
+    color: white;
+    text-align: center;
+}
+
+body.dark-theme .hero-section {
+    background-color: #282c34; /* Dark background */
+    color: white; /* Default text color */
+}
+
+body.light-theme .hero-section {
+    background-color: #f4f4f4; /* Light background */
+    color: #333; /* Dark text color */
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+#typed-text {
+    border-right: 2px solid;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #00FFFF; /* Cyan color for text */
+    transition: color 0.5s ease;
+}
+
+body.light-theme #typed-text {
+    color: #ff6347; /* Tomato color in light theme */
+}
+
+/* ICONS */
+/* Common styles for social icons and resume button */
+/* Common styles for social icons and resume button */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #00FFFF; /* Cyan color on hover */
+}
+
+.resume-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: transparent; /* Transparent background */
+    color: #00FFFF !important; /* Cyan text color */
+    border: 2px solid #00FFFF !important; /* Cyan border */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden; /* Ensure the icon stays within the button */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+}
+
+/* Resume button text visibility */
+.resume-btn span {
+    display: block;
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+/* Hide the text on hover */
+.resume-btn:hover span {
+    opacity: 0; /* Hide text on hover */
+}
+
+/* FontAwesome download icon */
+.resume-btn::before {
+    content: "\f019"; /* FontAwesome download icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: #00FFFF !important; /* Cyan icon color */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the icon */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+/* Show icon on hover */
+.resume-btn:hover::before {
+    opacity: 1; /* Show icon on hover */
+}
+
+/* Dark mode styles */
+.dark-mode-icons a {
+    color: #fff; /* White color for dark mode */
+}
+
+.dark-mode-icons .resume-btn {
+    color: #00FFFF !important; /* Cyan text color for dark mode */
+    border-color: #00FFFF !important; /* Cyan border for dark mode */
+}
+
+.dark-mode-icons .resume-btn::before {
+    color: #00FFFF !important; /* Cyan icon color for dark mode */
+}
+
+/* Light mode styles */
+.light-mode-icons {
+    display: none; /* Hide light mode icons by default */
+}
+
+body.light-theme .light-mode-icons {
+    display: flex; /* Show light mode icons in light theme */
+}
+
+body.light-theme .dark-mode-icons {
+    display: none; /* Hide dark mode icons in light theme */
+}
+
+.light-mode-icons a {
+    color: #121212; /* Dark color for light mode */
+}
+
+.light-mode-icons .resume-btn {
+    color: #121212 !important; /* Dark text color for light mode */
+    border-color: #121212 !important; /* Dark border for light mode */
+}
+
+.light-mode-icons .resume-btn::before {
+    color: #121212 !important; /* Dark icon color for light mode */
+}
+
+
+
+
+
 
 section {
     padding: 20px;
@@ -118,6 +283,117 @@ footer {
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-10px);
 }
+
+/* Hire Me Form Styles */
+#hireMeForm {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #444;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#hireMeForm:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ddd;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #888;
+}
+
+.submit-btn {
+    display: inline-block;
+    background-color: #555;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #777;
+    transform: scale(1.05);
+}
+/* Popup styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.popup-content h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.popup-content p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.popup-content button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+    background-color: #0056b3;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 
 /* Responsive Menu */
 @media (max-width: 768px) {
@@ -222,3 +498,4 @@ body, section, nav ul li a, footer, #home div a {
 #nav-links {
     transition: max-height 0.5s ease-in-out;
 }
+
