@@ -20,7 +20,33 @@
 
 document.getElementById('hireMeForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    document.getElementById('thankYouPopup').style.display = 'flex';
+
+    // Submit the form via Getform
+    fetch(this.action, {
+        method: this.method,
+        body: new FormData(this),
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            showPopup();
+            this.reset(); // Reset form fields after successful submission
+        } else {
+            console.error('Failed to send email:', response);
+        }
+    }).catch(error => {
+        console.error('An error occurred:', error);
+    });
+
+    function showPopup() {
+        const popup = document.getElementById('thankYouPopup');
+        popup.style.display = 'flex';
+
+        document.getElementById('closePopup').addEventListener('click', function() {
+            popup.style.display = 'none';
+        });
+    }
 });
 
 document.getElementById('closePopup').addEventListener('click', function() {
