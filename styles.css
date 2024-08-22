@@ -6,7 +6,40 @@ body {
     transition: background-color 0.3s, color 0.3s;
     background-color: #121212;
     color: white;
+
+    --background-color: #444;
+    --text-color: #ddd;
+    --input-background-color: #333;
+    --input-border-color: #555;
+    --input-focus-border-color: #888;
+    --submit-btn-bg-color: #555;
+    --submit-btn-hover-bg-color: #777;
+    --popup-background-color: white;
+    --popup-text-color: #333;
+    --popup-subtext-color: #555;
+    --popup-button-bg-color: #007BFF;
+    --popup-button-hover-bg-color: #0056b3;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --box-shadow-hover-color: rgba(0, 0, 0, 0.2);
 }
+
+body.light-theme {
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --input-background-color: #fff;
+    --input-border-color: #ccc;
+    --input-focus-border-color: #007BFF;
+    --submit-btn-bg-color: #007BFF;
+    --submit-btn-hover-bg-color: #0056b3;
+    --popup-background-color: #fff;
+    --popup-text-color: #333;
+    --popup-subtext-color: #555;
+    --popup-button-bg-color: #007BFF;
+    --popup-button-hover-bg-color: #0056b3;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --box-shadow-hover-color: rgba(0, 0, 0, 0.2);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -285,19 +318,29 @@ footer {
 }
 
 /* Hire Me Form Styles */
+/* Form Styles */
 #hireMeForm {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #444;
+    background-color: var(--background-color);
     border-radius: 10px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px var(--box-shadow-color);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 #hireMeForm:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 20px var(--box-shadow-hover-color);
+}
+
+body.light-theme #hireMeForm {
+    background-color: var(--background-color);
+    box-shadow: 0 10px 15px var(--box-shadow-color);
+}
+
+body.light-theme #hireMeForm:hover {
+    box-shadow: 0 15px 20px var(--box-shadow-hover-color);
 }
 
 .form-group {
@@ -307,29 +350,41 @@ footer {
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #ddd;
+    color: var(--text-color);
     font-weight: bold;
 }
 
-.form-group input, 
+.form-group input,
 .form-group textarea {
-    width: 100%;
+    width: 95%;
     padding: 10px;
-    background-color: #333;
-    color: white;
-    border: 1px solid #555;
+    background-color: var(--input-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--input-border-color);
     border-radius: 5px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-group input:focus, 
+body.light-theme .form-group input,
+body.light-theme .form-group textarea {
+    background-color: var(--input-background-color);
+    border-color: var(--input-border-color);
+}
+
+.form-group input:focus,
 .form-group textarea:focus {
-    border-color: #888;
+    border-color: var(--input-focus-border-color);
+    box-shadow: 0 0 10px rgba(136, 136, 136, 0.5);
+}
+
+body.light-theme .form-group input:focus,
+body.light-theme .form-group textarea:focus {
+    border-color: var(--input-focus-border-color);
 }
 
 .submit-btn {
     display: inline-block;
-    background-color: #555;
+    background-color: var(--submit-btn-bg-color);
     color: white;
     padding: 12px 25px;
     border: none;
@@ -338,61 +393,80 @@ footer {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+body.light-theme .submit-btn {
+    background-color: var(--submit-btn-bg-color);
+}
+
 .submit-btn:hover {
-    background-color: #777;
+    background-color: var(--submit-btn-hover-bg-color);
     transform: scale(1.05);
 }
-/* Popup styles */
+
+body.light-theme .submit-btn:hover {
+    background-color: var(--submit-btn-hover-bg-color);
+}
+
+/* Popup Styles */
 .popup {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
 .popup-content {
-    background-color: white;
+    background-color: var(--popup-background-color);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     animation: fadeIn 0.5s ease-in-out;
+    box-shadow: 0 10px 20px var(--box-shadow-hover-color);
 }
 
 .popup-content h2 {
-    color: #333;
+    color: var(--popup-text-color);
     margin-bottom: 10px;
 }
 
 .popup-content p {
-    color: #555;
+    color: var(--popup-subtext-color);
     margin-bottom: 20px;
 }
 
 .popup-content button {
-    background-color: #007BFF;
+    background-color: var(--popup-button-bg-color);
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .popup-content button:hover {
-    background-color: #0056b3;
+    background-color: var(--popup-button-hover-bg-color);
+    transform: scale(1.05);
 }
 
-/* Fade-in animation */
+/* Fade-in Animation */
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
+
+
 
 
 /* Responsive Menu */
@@ -414,6 +488,10 @@ footer {
         transition: max-height 0.5s ease;
         overflow: hidden;
         max-height: 0;
+    }
+
+    body.light-theme #nav-links{
+        background-color: white;
     }
 
     #nav-links.active {
@@ -499,3 +577,67 @@ body, section, nav ul li a, footer, #home div a {
     transition: max-height 0.5s ease-in-out;
 }
 
+/* Base Styles for the Projects Section */
+#projects {
+    background-color: #333;
+    color: var(--projects-text-color);
+}
+
+#projects h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--projects-title-color);
+}
+
+#projects h3 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: var(--projects-subtitle-color);
+}
+
+#projects p {
+    margin-bottom: 10px;
+    color: var(--projects-text-color);
+}
+
+/* Link Styles */
+#projects a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: var(--link-background-color);
+    color: var(--link-text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+#projects a:hover {
+    background-color: var(--link-hover-background-color);
+    color: var(--link-hover-text-color);
+    transform: scale(1.05);
+}
+
+/* Dark Mode Variables */
+body.dark-theme #projects {
+    --projects-background-color: #222;
+    --projects-text-color: #ddd;
+    --projects-title-color: #fff;
+    --projects-subtitle-color: #aaa;
+    --link-background-color: #dddddd;
+    --link-text-color: #fff;
+    --link-hover-background-color: #777;
+    --link-hover-text-color: #fff;
+}
+
+/* Light Mode Variables */
+body.light-theme #projects {
+    --projects-background-color: #f9f9f9;
+    --projects-text-color: #333;
+    --projects-title-color: #000;
+    --projects-subtitle-color: #555;
+    --link-background-color: #007BFF;
+    --link-text-color: #fff;
+    --link-hover-background-color: #0056b3;
+    --link-hover-text-color: #fff;
+}
