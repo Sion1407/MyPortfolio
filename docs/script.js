@@ -122,8 +122,54 @@ window.onload = function() {
 
 };
 
+// async function sendMessage() {
+//     const userInput = document.getElementById("user-input").value;
+//     if (!userInput) return;
+
+//     const chatContainer = document.getElementById("chat-container");
+
+//     // Display user message
+//     const userMessage = document.createElement("div");
+//     userMessage.classList.add("message", "user-message");
+//     userMessage.innerText = userInput;
+//     chatContainer.appendChild(userMessage);
+
+//     document.getElementById("user-input").value = ""; // Clear input
+
+    
+//     const backendUrl = "https://myportfolio-1-edn7.onrender.com/ask";
+
+//     const response = await fetch(backendUrl, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ message: userInput })
+//     });
+
+//     const data = await response.json();
+
+//     // Display bot response
+//     const botMessage = document.createElement("div");
+//     botMessage.classList.add("message", "bot-message");
+//     botMessage.innerText = data.reply;
+//     chatContainer.appendChild(botMessage);
+
+//     chatContainer.scrollTop = chatContainer.scrollHeight;
+// }
+function toggleChat() {
+    const chatContainer = document.getElementById("chat-container-wrapper");
+    const chatButton = document.getElementById("chat-button");
+
+    if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+        chatContainer.style.display = "flex";
+        chatButton.style.display = "none"; // Hide chat icon
+    } else {
+        chatContainer.style.display = "none";
+        chatButton.style.display = "flex"; // Show chat icon again
+    }
+}
+
 async function sendMessage() {
-    const userInput = document.getElementById("user-input").value;
+    const userInput = document.getElementById("user-input").value.trim();
     if (!userInput) return;
 
     const chatContainer = document.getElementById("chat-container");
@@ -136,25 +182,38 @@ async function sendMessage() {
 
     document.getElementById("user-input").value = ""; // Clear input
 
-    // Call backend API
-    const backendUrl = "https://your-backend-url.com/chat"; // Update this with your deployed Spring Boot URL
+    const backendUrl = "http://localhost:8000/ask";
 
-    const response = await fetch(backendUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userInput })
-    });
+    try {
+        const response = await fetch(backendUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ question: userInput })  
+        });
 
-    const data = await response.json();
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-    // Display bot response
-    const botMessage = document.createElement("div");
-    botMessage.classList.add("message", "bot-message");
-    botMessage.innerText = data.reply;
-    chatContainer.appendChild(botMessage);
+        const data = await response.json();
+
+        // Display bot response
+        const botMessage = document.createElement("div");
+        botMessage.classList.add("message", "bot-message");
+        botMessage.innerText = data.answer;  
+        chatContainer.appendChild(botMessage);
+
+    } catch (error) {
+        console.error("Error:", error);
+        const errorMessage = document.createElement("div");
+        errorMessage.classList.add("message", "bot-message");
+        errorMessage.innerText = "An error occurred. Please try again.";
+        chatContainer.appendChild(errorMessage);
+    }
 
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
+
 
 
 
