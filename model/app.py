@@ -110,8 +110,9 @@ import google.generativeai as genai
 
 from dotenv import load_dotenv
 
-load_dotenv()
-print(os.environ)
+if not load_dotenv():
+    logging.warning("No .env file found or it is empty. Proceeding with system environment variables.")
+
 # Configure Logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -119,10 +120,10 @@ logger = logging.getLogger(__name__)
 # Initialize FastAPI
 app = FastAPI()
 
-# Set up Google API Key (Replace with your actual key)
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")  
+# Set up Google API Key
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 if not GOOGLE_API_KEY:
-    raise RuntimeError("Google API key not found. Set GOOGLE_API_KEY in environment.")
+    raise RuntimeError("Google API key not found. Set GOOGLE_API_KEY in environment or .env file.")
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
