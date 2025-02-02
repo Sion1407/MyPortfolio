@@ -182,7 +182,7 @@ async function sendMessage() {
 
     document.getElementById("user-input").value = ""; // Clear input
 
-    const backendUrl = "http://localhost:8000/ask";
+    const backendUrl = "https://myportfolio-1-edn7.onrender.com/ask";
 
     try {
         const response = await fetch(backendUrl, {
