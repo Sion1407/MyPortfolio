@@ -108,10 +108,10 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import google.generativeai as genai
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-if not load_dotenv():
-    logging.warning("No .env file found or it is empty. Proceeding with system environment variables.")
+# if not load_dotenv():
+#     logging.warning("No .env file found or it is empty. Proceeding with system environment variables.")
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO)
