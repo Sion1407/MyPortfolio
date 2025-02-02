@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sion Chowdhury - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Portfolio of Sion Chowdhury, Java Backend Developer.">
+    <meta property="og:title" content="Sion Chowdhury - Portfolio">
+    <meta property="og:description"
+        content="Experienced Java Backend Developer specializing in scalable, high-performance applications.">
+    <meta property="og:image" content="path_to_image.jpg">
+    <meta property="og:url" content="your_website_url">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="nav-links">
+                <li><a href="#hero-section">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">🌙</button>
+        </nav>
+    </header>
+
+
+    <div class="hero-section" id="hero-section">
+        <h1>Sion Chowdhury</h1>
+        <h2>I am <span id="typed-text"></span></h2>
+        <div class="social-icons dark-mode-icons">
+            <a href="https://github.com/Sion1407" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="http://www.linkedin.com/in/sionchowdhury" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="/SionChowdhury_CV (3).pdf" download="Sion_Chowdhury_Resume" aria-label="Resume">
+                <button class="resume-btn">
+                    <span>Resume</span>
+                </button>
+            </a>
+        </div>
+
+        <div class="social-icons light-mode-icons">
+            <a href="https://github.com/Sion1407" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="http://www.linkedin.com/in/sionchowdhury" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="/SionChowdhury_JavaCV.pdf" download="Sion_Chowdhury_Resume" aria-label="Resume">
+                <button class="resume-btn">
+                    <span>Resume</span>
+                </button>
+            </a>
+        </div>
+
+    </div>
+
+
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a Java Backend Developer with over 2 years of experience at Nisum, specializing in Java, Spring Boot,
+            Web Flux, Kafka, and SQL Server.</p>
+        <p>I have contributed to enhancing eCommerce platforms and developing new platforms from scratch.</p>
+        <p>Recipient of the 'Excellence Award' and 'Rockstar Award'.</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <h3>Nisum, Backend Developer | Aug 2022 - Present</h3>
+        <ul>
+            <li>Developed and supported the 'Schedule & Save' feature for Albertsons websites.</li>
+            <li>Contributed to a greenfield project, developing a new platform from scratch.</li>
+            <li>Enhanced Safeway's eCommerce experience with new functionalities.</li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li><strong>Programming Languages:</strong> C/C++, Java (8/17), Reactive Programming, SQL</li>
+            <li><strong>Frameworks:</strong> Spring, Spring Boot, Web Flux, Spring Cloud, Kafka</li>
+            <li><strong>Other Skills:</strong> Microservices, Agile, REST API, MVC framework</li>
+            <li><strong>Familiar Technologies:</strong> JavaScript, Angular, Node.js, AWS</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <h3>URL Shortener Service</h3>
+        <p>Developed a full-stack URL shortener application using Spring Boot, PostgreSQL, and Node.js.</p>
+        <a href="https://github.com/Sion1407/Sion_vt_08_08_2024" target="_blank">View on GitHub</a>
+        <h3>Smart Resume Picker (In Progress)</h3>
+        <p>Implemented a job application portal with resume upload and candidate suggestion features.</p>
+        <a href="https://github.com/Sion1407/Smart-Resume-Picker" target="_blank">View on GitHub</a>
+    </section>
+
+    <section id="contact">
+        <h2>Want to connect with me?</h2>
+        <form id="hireMeForm" action="https://getform.io/f/awngeyzb" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send</button>
+        </form>
+    </section>
+
+    <!-- Thank You Popup -->
+    <div id="thankYouPopup" class="popup">
+        <div class="popup-content">
+            <h2>Thank You!</h2>
+            <p>Your request has been sent.</p>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
+
+    <div id="chat-button" onclick="toggleChat()">
+        💬
+    </div>
+    <!-- Chat Window -->
+    <div id="chat-container-wrapper">
+        <div id="chat-header">
+            <span>Chat with Me</span>
+            <button id="close-chat" onclick="toggleChat()">×</button>
+        </div>
+        <div id="chat-container"></div>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Ask me something...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
