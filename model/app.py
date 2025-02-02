@@ -1,14 +1,16 @@
+import logging  # Import the logging module
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from gpt4all import GPT4All
-import sys
 
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
     format="%(asctime)s - %(levelname)s - %(message)s",  # Log format
     handlers=[
-        logging.FileHandler("chatbot.log"),  # Log to a file
-        logging.StreamHandler(sys.stdout)  # Log to the console
+        logging.FileHandler("chatbot.log", encoding="utf-8"),  # Log to a file
+        logging.StreamHandler()  # Log to the console
     ]
 )
 
@@ -18,12 +20,14 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 # Load the GPT4All model
+try:
+    logger.info("Loading GPT4All model...")
+    model = GPT4All("mistral-7b-instruct-v0.1.Q4_0.gguf")
+    logger.info("Model loaded successfully.")
+except Exception as e:
+    logger.error(f"Failed to load GPT4All model: {str(e)}")
+    raise RuntimeError(f"Failed to load GPT4All model: {str(e)}")
 
-# Define the request body structure
-class QuestionRequest(BaseModel):
-    question: str
-
-model = GPT4All("mistral-7b-instruct-v0.1.Q4_0.gguf")
 # Sample chatbot data
 chatbot_data = """
 Sion Chowdhury is a Java Backend Developer with over 2 years of experience at Nisum.
@@ -55,22 +59,33 @@ Education:
 Bachelor of Computer Engineering from Savitribai Phule Pune University (D.Y. Patil College of Engineering) with a CGPA of 8.96/10.
 """
 
+# Define the request body structure
+class QuestionRequest(BaseModel):
+    question: str
+
 # Define the API endpoint
 @app.post("/ask")
 def ask_question(request: QuestionRequest):
     """Generate a response using the GPT4All model"""
-    logger.info("Starting chatbot script...")
+    logger.info("Received a new question.")
     try:
         # Generate the response
-        prompt = chatbot_data + "\n\nQ: " + request.question + "\nA:"
-        logger.info(f"User message received: {request.question}")
+        prompt = "\n\nQ: " + request.question + "\nA:"
+        logger.info(f"Prompt: {prompt}")
         response = model.generate(prompt)
+        logger.info(f"Response generated: {response}")
         return {"answer": response}
     except Exception as e:
+        logger.error(f"Error generating response: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error generating response: {str(e)}")
+@app.get("/test")
+def check():
+    logger.info("FastAPI working.")
+    return {"answer": "Hello World"}
 
 # Run the application
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
+    logger.info(f"Starting FastAPI server on port {port}...")
     uvicorn.run(app, host="0.0.0.0", port=port)
