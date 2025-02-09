@@ -155,64 +155,162 @@ window.onload = function() {
 
 //     chatContainer.scrollTop = chatContainer.scrollHeight;
 // }
-function toggleChat() {
-    const chatContainer = document.getElementById("chat-container-wrapper");
-    const chatButton = document.getElementById("chat-button");
+// function toggleChat() {
+//     const chatContainer = document.getElementById("chat-container-wrapper");
+//     const chatButton = document.getElementById("chat-button");
 
-    if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
-        chatContainer.style.display = "flex";
-        chatButton.style.display = "none"; // Hide chat icon
-    } else {
-        chatContainer.style.display = "none";
-        chatButton.style.display = "flex"; // Show chat icon again
-    }
-}
+//     if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+//         chatContainer.style.display = "flex";
+//         chatButton.style.display = "none"; // Hide chat icon
+//     } else {
+//         chatContainer.style.display = "none";
+//         chatButton.style.display = "flex"; // Show chat icon again
+//     }
+// }
 
-async function sendMessage() {
-    const userInput = document.getElementById("user-input").value.trim();
-    if (!userInput) return;
+// async function sendMessage() {
+//     const userInput = document.getElementById("user-input").value.trim();
+//     if (!userInput) return;
 
+//     const chatContainer = document.getElementById("chat-container");
+
+//     // Display user message
+//     const userMessage = document.createElement("div");
+//     userMessage.classList.add("message", "user-message");
+//     userMessage.innerText = userInput;
+//     chatContainer.appendChild(userMessage);
+
+//     document.getElementById("user-input").value = ""; // Clear input
+
+//     const backendUrl = "https://myportfolio-1-edn7.onrender.com/ask";
+
+//     try {
+//         const response = await fetch(backendUrl, {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({ question: userInput })  
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+
+//         // Display bot response
+//         const botMessage = document.createElement("div");
+//         botMessage.classList.add("message", "bot-message");
+//         botMessage.innerText = data.answer;  
+//         chatContainer.appendChild(botMessage);
+
+//     } catch (error) {
+//         console.error("Error:", error);
+//         const errorMessage = document.createElement("div");
+//         errorMessage.classList.add("message", "bot-message");
+//         errorMessage.innerText = "An error occurred. Please try again.";
+//         chatContainer.appendChild(errorMessage);
+//     }
+
+//     chatContainer.scrollTop = chatContainer.scrollHeight;
+// }
+
+document.addEventListener("DOMContentLoaded", async () => {
     const chatContainer = document.getElementById("chat-container");
 
-    // Display user message
-    const userMessage = document.createElement("div");
-    userMessage.classList.add("message", "user-message");
-    userMessage.innerText = userInput;
-    chatContainer.appendChild(userMessage);
-
-    document.getElementById("user-input").value = ""; // Clear input
-
-    const backendUrl = "https://myportfolio-1-edn7.onrender.com/ask";
+    // Show AI loading message
+    let loadingMessage = document.createElement("div");
+    loadingMessage.classList.add("message", "bot-message");
+    loadingMessage.innerText = "Loading AI...";
+    chatContainer.appendChild(loadingMessage);
 
     try {
-        const response = await fetch(backendUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question: userInput })  
-        });
+        // Simulate AI loading time (use real API in production)
+        await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        // AI is ready, clear loading message
+        chatContainer.innerHTML = "";
 
-        const data = await response.json();
-
-        // Display bot response
-        const botMessage = document.createElement("div");
-        botMessage.classList.add("message", "bot-message");
-        botMessage.innerText = data.answer;  
-        chatContainer.appendChild(botMessage);
+        // Show animated greeting
+        showAnimatedGreeting("Any questions about Sion? Ask me!");
 
     } catch (error) {
         console.error("Error:", error);
-        const errorMessage = document.createElement("div");
-        errorMessage.classList.add("message", "bot-message");
-        errorMessage.innerText = "An error occurred. Please try again.";
-        chatContainer.appendChild(errorMessage);
+        loadingMessage.innerText = "Error loading AI. Try again later.";
+    }
+});
+
+// Function to animate greeting text
+function showAnimatedGreeting(message) {
+    const chatContainer = document.getElementById("chat-container");
+
+    let greetingMessage = document.createElement("div");
+    greetingMessage.classList.add("message", "bot-message", "animated-text");
+    chatContainer.appendChild(greetingMessage);
+
+    let index = 0;
+    function typeNextLetter() {
+        if (index < message.length) {
+            greetingMessage.innerHTML += message.charAt(index);
+            index++;
+            setTimeout(typeNextLetter, 50); // Typing speed
+        }
     }
 
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    // Apply fade-in effect
+    greetingMessage.style.opacity = "0";
+    setTimeout(() => {
+        greetingMessage.style.opacity = "1";
+        typeNextLetter();
+    }, 500);
 }
+
+
+// Toggle chat visibility
+function toggleChat() {
+    const chatWrapper = document.getElementById("chat-container-wrapper");
+    chatWrapper.style.display = chatWrapper.style.display === "block" ? "none" : "block";
+}
+
+// Handle user input
+function sendMessage() {
+    const userInput = document.getElementById("user-input");
+    const chatContainer = document.getElementById("chat-container");
+
+    if (userInput.value.trim() === "") return;
+
+    // Add user message
+    let userMessage = document.createElement("div");
+    userMessage.classList.add("message", "user-message");
+    userMessage.innerText = userInput.value;
+    chatContainer.appendChild(userMessage);
+
+    // Clear input field
+    let userQuery = userInput.value;
+    userInput.value = "";
+
+    // Call AI backend
+    fetch("https://myportfolio-1-edn7.onrender.com/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: userQuery })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display AI response
+        let botMessage = document.createElement("div");
+        botMessage.classList.add("message", "bot-message");
+        botMessage.innerText = data.answer;
+        chatContainer.appendChild(botMessage);
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        let errorMessage = document.createElement("div");
+        errorMessage.classList.add("message", "bot-message");
+        errorMessage.innerText = "Oops! Something went wrong.";
+        chatContainer.appendChild(errorMessage);
+    });
+}
+
 
 
 
