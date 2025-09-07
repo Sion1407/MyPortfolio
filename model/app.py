@@ -31,10 +31,9 @@ if not GOOGLE_API_KEY:
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
-# Load the Smallest Gemini Model (for Speed & Cost Efficiency)
 try:
     logger.info("Initializing Gemini model...")
-    model = genai.GenerativeModel("gemini-1.5-flash-001")  # Fastest & cheapest
+    model = genai.GenerativeModel("gemini-1.5-flash-001")
     logger.info("Gemini model initialized successfully.")
 except Exception as e:
     logger.error(f"Failed to initialize Gemini model: {str(e)}")
