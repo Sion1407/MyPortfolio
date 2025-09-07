@@ -1,367 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sion Chowdhury - Java Backend Developer</title>
+    <title>Sion Chowdhury - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="description" content="Portfolio of Sion Chowdhury, experienced Java Backend Developer specializing in Spring Boot, Kafka, and microservices.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Portfolio of Sion Chowdhury, Java Backend Developer.">
+    <meta property="og:title" content="Sion Chowdhury - Portfolio">
+    <meta property="og:description"
+        content="Experienced Java Backend Developer specializing in scalable, high-performance applications.">
+    <meta property="og:image" content="path_to_image.jpg">
+    <meta property="og:url" content="your_website_url">
+
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">Sion<span class="highlight">Dev</span></span>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#hero" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <button class="theme-toggle" id="theme-toggle">
-                <i class="fas fa-moon"></i>
+    <header>
+        <nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-        </div>
-    </nav>
+            <ul id="nav-links">
+                <li><a href="#hero-section">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">🌙</button>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text-center">
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="name-highlight">Sion Chowdhury</span>
-                    </h1>
-                    <div class="hero-subtitle">
-                        <span class="typing-text">I am a <span id="typed-text"></span><span class="cursor">|</span></span>
-                    </div>
-                    <p class="hero-description">
-                        Passionate Java Backend Developer with 2+ years of experience building scalable, 
-                        high-performance applications using cutting-edge technologies.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">
-                            <i class="fas fa-envelope"></i>
-                            Get In Touch
-                        </a>
-                        <a href="#projects" class="btn btn-secondary">
-                            <i class="fas fa-code"></i>
-                            View Work
-                        </a>
-                    </div>
-                    <div class="hero-social-links">
-                        <a href="https://github.com/Sion1407" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="http://www.linkedin.com/in/sionchowdhury" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="/resume.pdf" download="SionChowdhuryJavaDev_3yrs.pdf" aria-label="Resume">
-                            <i class="fas fa-file-pdf"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-description">
-                        I am a dedicated Java Backend Developer with over 3 years of experience at Nisum, 
-                        specializing in designing and deploying scalable, high-performance applications.
-                        Skilled in optimizing system performance and enhancing eCommerce platforms, 
-                        and proficient in Java, Python, and AI/ML concepts.
-                    </p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">3+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">$1M+</div>
-                            <div class="stat-label">Cost Savings</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">2</div>
-                            <div class="stat-label">Awards Won</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">8.96</div>
-                            <div class="stat-label">CGPA</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-
-    <!-- Experience Section -->
-    <section id="experience" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Java Backend Developer</h3>
-                            <span class="company">Nisum</span>
-                            <span class="duration">Aug 2022 - Present</span>
-                        </div>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Spearheaded the development and optimization of the Schedule & Save platform for Albertsons’ eCommerce site, increasing user engagement by 35% and boosting sales by 20%.</li>
-                                <li>Enhanced codebase efficiency, reducing application latency by 60% and improving UX.</li>
-                                <li>Created in-house platform saving clients $1M annually by removing third-party dependencies.</li>
-                                <li>Designed and implemented 20+ APIs for Safeway’s eCommerce platform, reducing system downtime by 15%.</li>
-                                <li>Developed functional tests with Docker TestContainer and JUnit achieving 85%+ code coverage.</li>
-                                <li>Fixed Sonar & Veracode vulnerabilities, improving security by 30%.</li>
-                                <li>Implemented third-party payment gateway integrations and error handling logic for resilience.</li>
-                                <li>Leveraged GitHub Copilot to accelerate development and meet sprint deadlines.</li>
-                            </ul>
-                        </div>
-                        <div class="awards">
-                            <span class="award-badge">Excellence Award</span>
-                            <span class="award-badge">Rockstar Award</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Java 8/17</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Data Structures</span>
-                        <span class="skill-tag">Algorithms</span>
-                        <span class="skill-tag">JSON</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Frameworks & Libraries</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Spring Boot</span>
-                        <span class="skill-tag">Spring WebFlux</span>
-                        <span class="skill-tag">Spring Cloud</span>
-                        <span class="skill-tag">Kafka</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases & Cloud</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MS SQL Server</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Azure Kubernetes Services</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Concepts & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Microservices Architecture</span>
-                        <span class="skill-tag">REST API Design</span>
-                        <span class="skill-tag">Agile Methodologies</span>
-                        <span class="skill-tag">GenAI</span>
-                        <span class="skill-tag">GitHub CI/CD</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Grafana</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-
-    <!-- Projects Section -->
-    <section id="projects" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>URL Shortener with Enhanced Analytics</h3>
-                        <a href="https://github.com/Sion1407/URL-Shortner" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <p class="project-description">
-                        Full-stack URL shortener handling 1000+ daily unique requests with analytics dashboard and Nginx load balancing.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Java 21</span>
-                        <span class="tech-tag">Spring Boot</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Nginx</span>
-                        <span class="tech-tag">Python (Analytics)</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Banking Application With OAuth2</h3>
-                        <a href="https://github.com/Sion1407/FinFlow" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <p class="project-description">
-                        Reactive banking application built on Spring Boot with OAuth2 authentication and hosted on Google Cloud Platform.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Spring Boot</span>
-                        <span class="tech-tag">OAuth2</span>
-                        <span class="tech-tag">Google Cloud Platform</span>
-                        <span class="tech-tag">Kubernetes</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Gen-AI Resume Chatbot</h3>
-                        <a href="https://github.com/Sion1407/AI-Resume-Chatbot" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <p class="project-description">
-                        AI-driven chatbot using Google Gemini API enabling real-time Q&A based on my resume.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Google Gemini AI</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">HTML/CSS/JS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="contact-content">
-                <div class="contact-form-container">
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Sion Chowdhury. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Enhanced AI Chatbot -->
-    <div class="chatbot-container" id="chatbot-container">
-        <!-- Chat Toggle Button -->
-        <div class="chat-button" id="chat-button">
-            <div class="chat-button-icon">
-                <i class="fas fa-comments"></i>
-            </div>
-            <div class="chat-button-pulse"></div>
-        </div>
-
-        <!-- Chat Window -->
-        <div class="chat-window" id="chat-window">
-            <div class="chat-header">
-                <div class="chat-avatar">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="chat-header-info">
-                    <div class="chat-title">Sion's Assistant</div>
-                    <div class="chat-status">Online</div>
-                </div>
-                <button class="chat-close" id="chat-close">
-                    <i class="fas fa-times"></i>
+    <div class="hero-section" id="hero-section">
+        <h1>Sion Chowdhury</h1>
+        <h2>I am <span id="typed-text"></span></h2>
+        <div class="social-icons dark-mode-icons">
+            <a href="https://github.com/Sion1407" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="http://www.linkedin.com/in/sionchowdhury" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="/SionChowdhury_CV (3).pdf" download="Sion_Chowdhury_Resume" aria-label="Resume">
+                <button class="resume-btn">
+                    <span>Resume</span>
                 </button>
-            </div>
+            </a>
+        </div>
 
-            <div class="chat-messages" id="chat-messages">
-                <div class="chat-message bot-message" id="welcome-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <div class="message-bubble">
-                            <div class="typing-indicator" id="welcome-typing">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <div class="message-text" id="welcome-text" style="display: none;">
-                                Hi! I'm Sion's AI assistant. Ask me anything about his experience, skills, or projects! 🚀
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="social-icons light-mode-icons">
+            <a href="https://github.com/Sion1407" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="http://www.linkedin.com/in/sionchowdhury" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="/SionChowdhury_JavaCV.pdf" download="Sion_Chowdhury_Resume" aria-label="Resume">
+                <button class="resume-btn">
+                    <span>Resume</span>
+                </button>
+            </a>
+        </div>
 
-            <div class="chat-input-container">
-                <div class="chat-input-wrapper">
-                    <input type="text" id="chat-input" placeholder="Ask about Sion's experience..." maxlength="500">
-                    <button class="chat-send-btn" id="chat-send-btn">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-                <div class="chat-suggestions" id="chat-suggestions">
-                    <button class="suggestion-btn">Tell me about Sion's experience</button>
-                    <button class="suggestion-btn">What technologies does he use?</button>
-                    <button class="suggestion-btn">Show me his projects</button>
-                </div>
+    </div>
+
+
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a Java Backend Developer with over 2 years of experience at Nisum, specializing in Java, Spring Boot,
+            Web Flux, Kafka, and SQL Server.</p>
+        <p>I have contributed to enhancing eCommerce platforms and developing new platforms from scratch.</p>
+        <p>Recipient of the 'Excellence Award' and 'Rockstar Award'.</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <h3>Nisum, Backend Developer | Aug 2022 - Present</h3>
+        <ul>
+            <li>Developed and supported the 'Schedule & Save' feature for Albertsons websites.</li>
+            <li>Contributed to a greenfield project, developing a new platform from scratch.</li>
+            <li>Enhanced Safeway's eCommerce experience with new functionalities.</li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li><strong>Programming Languages:</strong> C/C++, Java (8/17), Reactive Programming, SQL</li>
+            <li><strong>Frameworks:</strong> Spring, Spring Boot, Web Flux, Spring Cloud, Kafka</li>
+            <li><strong>Other Skills:</strong> Microservices, Agile, REST API, MVC framework</li>
+            <li><strong>Familiar Technologies:</strong> JavaScript, Angular, Node.js, AWS</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <h3>URL Shortener Service</h3>
+        <p>Developed a full-stack URL shortener application using Spring Boot, PostgreSQL, and Node.js.</p>
+        <a href="https://github.com/Sion1407/Sion_vt_08_08_2024" target="_blank">View on GitHub</a>
+        <h3>Smart Resume Picker (In Progress)</h3>
+        <p>Implemented a job application portal with resume upload and candidate suggestion features.</p>
+        <a href="https://github.com/Sion1407/Smart-Resume-Picker" target="_blank">View on GitHub</a>
+    </section>
+
+    <section id="contact">
+        <h2>Want to connect with me?</h2>
+        <form id="hireMeForm" action="https://getform.io/f/awngeyzb" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
             </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send</button>
+        </form>
+    </section>
+
+    <!-- Thank You Popup -->
+    <div id="thankYouPopup" class="popup">
+        <div class="popup-content">
+            <h2>Thank You!</h2>
+            <p>Your request has been sent.</p>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
+
+    <div id="chat-button" onclick="toggleChat()">
+        💬
+    </div>
+    <!-- Chat Window -->
+    <div id="chat-container-wrapper">
+        <div id="chat-header">
+            <span>Chat with Me</span>
+            <button id="close-chat" onclick="toggleChat()">×</button>
+        </div>
+        <div id="chat-container"></div>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Ask me something...">
+            <button onclick="sendMessage()">Send</button>
         </div>
     </div>
 
